@@ -2,8 +2,8 @@
   Represent a list, implemented in a chain of nodes
  */
 
-public class List_inChainOfNodes_Iterative{
-    private Node headReference;
+public class List_inChainOfNodes_iterationStyle{
+    private Node_iterationStyle headReference;
 
     /**
       Construct an empty list
@@ -16,7 +16,7 @@ public class List_inChainOfNodes_Iterative{
 
      public int size(){
          int size = 0;
-         Node reference = headReference;
+         Node_iterationStyle reference = headReference;
          while(reference != null){
              size ++;
              reference = reference.getReferenceToNextNode();
@@ -32,7 +32,7 @@ public class List_inChainOfNodes_Iterative{
 
      public String toString(){
          String listString = "";
-         Node reference = headReference;
+         Node_iterationStyle reference = headReference;
          while(reference != null){
              listString = listString + reference.getCargoReference();
              reference = reference.getReferenceToNextNode();
@@ -46,7 +46,7 @@ public class List_inChainOfNodes_Iterative{
       @return true, in keeping with conventions yet to be discussed
      */
      public boolean addAsHead( Object val) {
-        Node node = new Node(val, headReference);
+        Node_iterationStyle node = new Node_iterationStyle(val, headReference);
         headReference = node;
         return true;
      }
