@@ -34,7 +34,7 @@ public class List_inChainOfNodes{
        return "[" + toString(headReference);
      }
 
-     public String toString(Node reference){
+     private String toString(Node reference){
        if(reference == null){
          return "]";
        }
