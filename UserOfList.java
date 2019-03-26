@@ -25,5 +25,17 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
+
+	for(int count = 0; count < list.size(); count ++){
+		System.out.println(list.get(count));
+		}
+
+	System.out.println("Changing y to " + list.set(1, "B"));
+	System.out.println(list);
+
+	list.add(2, "E");
+	list.add(2, "E");
+
+	System.out.println(list + " expecting [S,B,E,E,u,y,]");
     }
 }

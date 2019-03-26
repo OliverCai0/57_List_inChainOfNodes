@@ -108,5 +108,17 @@ public class List_inChainOfNodes{
             }
         }
       }
+	
+	/**
+	Removes a value at a given index
+	*/
+
+	public Object remove(int index){
+		return remove(index, headReference);
+	}
+
+	private Object remove(int index, Node reference){
+		if(index == 0 && reference == null){
+			
 
 }
