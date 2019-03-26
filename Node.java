@@ -53,4 +53,8 @@ public class Node {
      public Object getCargoReference() {
        return cargoReference;
     }
+
+    public void changeCargoReference(Object newValue){
+      cargoReference = newValue;
+    }
 }

@@ -53,4 +53,60 @@ public class List_inChainOfNodes{
         headReference = node;
         return true;
      }
+
+     /**
+      * Change value at given index to given value
+      */
+
+      public Object set(int index, Object newValue){
+        return set(index, newValue, headReference);
+      }
+
+      private Object set(int index, Object newValue, Node reference){
+        if(index == 0){
+          Object oldValue = reference.getCargoReference();
+          reference.changeCargoReference(newValue);
+          return oldValue;
+        }
+        else{
+          return set(index - 1, newValue, reference.getReferenceToNextNode());
+        }
+      }
+
+      /**
+       * Returns value at given index
+       */
+
+       public Object get(int index){
+         return get(index, headReference);
+       }
+
+       private Object get(int index, Node reference){
+          if (index == 0) return reference.getCargoReference();
+          else{
+            return get(index - 1, reference.getReferenceToNextNode());
+          }
+       }
+
+       /**
+        * Inserts a given value at a given index
+        */
+
+        public void add(int index, Object value){
+          Node valueHolder = new Node(value);
+          add(index, value, headReference, valueHolder);
+        }
+
+        private void add(int index, Object value, Node reference, Node valueHolder){
+          if(index == 0){
+             valueHolder.setReferenceToNextNode(reference);
+          }
+          else {
+            add(index - 1, value, reference.getReferenceToNextNode(), valueHolder);
+            if(index == 1){
+              reference.setReferenceToNextNode(valueHolder);
+            }
+        }
+      }
+
 }
