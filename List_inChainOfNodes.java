@@ -24,6 +24,10 @@ public class List_inChainOfNodes{
          return 1 + size(reference.getReferenceToNextNode());
      }
 
+     public Object getHeadReference(){
+       return headReference.getCargoReference();
+     }
+
     
      /**
        @return a string representation of this list,
@@ -93,6 +97,9 @@ public class List_inChainOfNodes{
         */
 
         public void add(int index, Object value){
+          if(index == 0){
+            addAsHead(value);
+          }
           Node valueHolder = new Node(value);
           add(index, value, headReference, valueHolder);
         }
@@ -110,15 +117,56 @@ public class List_inChainOfNodes{
       }
 	
 	/**
-	Removes a value at a given index
-	*/
-
+  Removes a value at a given index
+  */
+  
+  public Object remove(int index){
+    Object removedObject;
+    Node targetNode = headReference;
+    int element = index;
+    if(index == 0){
+      removedObject = headReference.getCargoReference();
+      headReference = headReference.getReferenceToNextNode();
+    }
+    else if (index == (size() - 1)){
+      while(element > 1){
+        targetNode = targetNode.getReferenceToNextNode();
+        element --;
+      }
+      removedObject = targetNode.getReferenceToNextNode().getCargoReference();
+      targetNode.setReferenceToNextNode(null);
+    }
+    else {
+      while(element > 1){
+        targetNode = targetNode.getReferenceToNextNode();
+        element --;
+      }
+      removedObject = targetNode.getReferenceToNextNode().getCargoReference();
+      targetNode.setReferenceToNextNode(targetNode.getReferenceToNextNode().getReferenceToNextNode());
+    }
+    return removedObject;
+  }
+/** 
 	public Object remove(int index){
-		return remove(index, headReference);
-	}
-
-	private Object remove(int index, Node reference){
-		if(index == 0 && reference == null){
-			
-
+    Object removedObject;
+    Node priorNode = headReference;
+    if(index == 0){
+      removedObject = headReference.getCargoReference();
+      addAsHead(headReference.getReferenceToNextNode());
+    }
+    while(index > 1){
+      priorNode = priorNode.getReferenceToNextNode();
+      index --;
+    }
+    Node targetNode = priorNode.getReferenceToNextNode();
+    removedObject = targetNode.getCargoReference();
+    if(targetNode.getReferenceToNextNode() != null){
+      priorNode.setReferenceToNextNode(targetNode.getReferenceToNextNode());
+    }
+    else{
+      priorNode.setReferenceToNextNode(null);
+    } 
+		return removedObject;
+  }
+  */
 }

@@ -36,6 +36,13 @@ public class UserOfList {
 	list.add(2, "E");
 	list.add(2, "E");
 
-	System.out.println(list + " expecting [S,B,E,E,u,y,]");
+    System.out.println(list + " expecting [S,B,E,E,u,y,]");
+    System.out.println(list.getHeadReference());
+    
+    System.out.println("Removing the letters " + list.remove(0) 
+                        + " and " + list.remove(3) 
+                        + " and " + list.remove(3));
+
+    System.out.println(list + " expecting [B,E,E,]");
     }
 }
