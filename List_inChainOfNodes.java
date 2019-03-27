@@ -124,49 +124,23 @@ public class List_inChainOfNodes{
     Object removedObject;
     Node targetNode = headReference;
     int element = index;
+    while(element > 1){
+      targetNode = targetNode.getReferenceToNextNode();
+      element --;
+    }
+    Node removedNode = targetNode.getReferenceToNextNode();
     if(index == 0){
       removedObject = headReference.getCargoReference();
       headReference = headReference.getReferenceToNextNode();
     }
     else if (index == (size() - 1)){
-      while(element > 1){
-        targetNode = targetNode.getReferenceToNextNode();
-        element --;
-      }
-      removedObject = targetNode.getReferenceToNextNode().getCargoReference();
+      removedObject = removedNode.getCargoReference();
       targetNode.setReferenceToNextNode(null);
     }
     else {
-      while(element > 1){
-        targetNode = targetNode.getReferenceToNextNode();
-        element --;
-      }
-      removedObject = targetNode.getReferenceToNextNode().getCargoReference();
-      targetNode.setReferenceToNextNode(targetNode.getReferenceToNextNode().getReferenceToNextNode());
+      removedObject = removedNode.getCargoReference();
+      targetNode.setReferenceToNextNode(removedNode.getReferenceToNextNode());
     }
     return removedObject;
   }
-/** 
-	public Object remove(int index){
-    Object removedObject;
-    Node priorNode = headReference;
-    if(index == 0){
-      removedObject = headReference.getCargoReference();
-      addAsHead(headReference.getReferenceToNextNode());
-    }
-    while(index > 1){
-      priorNode = priorNode.getReferenceToNextNode();
-      index --;
-    }
-    Node targetNode = priorNode.getReferenceToNextNode();
-    removedObject = targetNode.getCargoReference();
-    if(targetNode.getReferenceToNextNode() != null){
-      priorNode.setReferenceToNextNode(targetNode.getReferenceToNextNode());
-    }
-    else{
-      priorNode.setReferenceToNextNode(null);
-    } 
-		return removedObject;
-  }
-  */
 }
